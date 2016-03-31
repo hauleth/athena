@@ -34,10 +34,6 @@ node default {
   }
 
   nginx::resource::vhost {
-    'athena.niemier.pl':
-      ensure   => absent,
-      www_root => '/var/www',
-      require  => File['/var/www'];
     'matuszewska.photo':
       ensure           => present,
       www_root         => '/home/pyskata/www',
