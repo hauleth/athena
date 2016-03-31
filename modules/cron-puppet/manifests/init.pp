@@ -1,7 +1,5 @@
 class cron-puppet ($minute = '*/5') {
-  package { 'git':
-    ensure => installed,
-  }
+  ensure_packages(['git'])
 
   file { 'post-hook':
     ensure => file,

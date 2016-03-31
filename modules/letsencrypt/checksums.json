@@ -1,0 +1,18 @@
+{
+  "CHANGELOG.md": "23c9335b9fbb3899f993f9133560a6b2",
+  "Gemfile": "118d5ed5ac1bed5869aa66b03d46bb2f",
+  "LICENSE": "e7fff5d8ca4f44f1279782ead2da5925",
+  "README.md": "0a9a275d592e446ccf7771575ccd9184",
+  "Rakefile": "e0dd5d26c7dfc9564c0691f348643c2f",
+  "manifests/certonly.pp": "8cf4487197573a24843104d4f93c87be",
+  "manifests/config/ini.pp": "c6a59dcc2d2a07a6bc1cd9333bccb771",
+  "manifests/config.pp": "506a22514e4db7e07eb9bc69c71bcde6",
+  "manifests/init.pp": "1b03cafffb5b0410c6441c5a6c38626c",
+  "manifests/install.pp": "585d3af6940f85c7cc4dcd78e0e0ce00",
+  "manifests/params.pp": "6ff8c52e88d652ec71d75fbfd42d86e1",
+  "metadata.json": "c288af5975135f1e5a33a3141338554e",
+  "spec/classes/letsencrypt_install_spec.rb": "a58994df8d1e32619630cd1a9d566ff0",
+  "spec/classes/letsencrypt_spec.rb": "3822ba2507a7382f1e523f38ff8c53e5",
+  "spec/defines/letsencrypt_certonly_spec.rb": "3dc2fce67ef6185452580c9830b3ce75",
+  "spec/spec_helper.rb": "0db89c9a486df193c0e40095422e19dc"
+}
