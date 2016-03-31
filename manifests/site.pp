@@ -1,13 +1,4 @@
-package { 'git':
-  ensure => installed,
-}
-
-cron { 'puppet-apply':
-  ensure  => present,
-  command => 'git --work-tree=/etc/puppet pull',
-  user    => root,
-  minute  => '*/30',
-}
+include cron-puppet
 
 user { 'hauleth':
   ensure     => present,
