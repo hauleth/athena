@@ -1,4 +1,4 @@
-class cron-puppet {
+class cron-puppet ($minute = '*/5') {
   package { 'git':
     ensure => installed,
   }
@@ -16,7 +16,7 @@ class cron-puppet {
     ensure  => present,
     command => 'git --git-dir=/etc/puppet/.git --work-tree=/etc/puppet pull',
     user    => root,
-    minute  => '*/30',
+    minute  => $minute,
     require => File['post-hook']
   }
 }
