@@ -35,6 +35,9 @@ node default {
   nginx::resource::vhost { 'matuszewska.photo':
     ensure   => present,
     www_root => '/home/pyskata/www',
+    ssl      => true,
+    ssl_cert => '/etc/letsencrypt/live/matuszewska.photo/fullchain.pem',
+    ssl_key  => '/etc/letsencrypt/live/matuszewska.photo/privkey.pem',
     require  => User['pyskata'],
   }
 
