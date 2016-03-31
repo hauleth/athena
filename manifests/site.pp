@@ -33,6 +33,15 @@ node default {
     email =>  'lukasz@niemier.pl',
   }
 
+  service {
+    'ssh':
+      ensure => running,
+      enable => true;
+    'puppet':
+      ensure => stopped,
+      enable => false;
+  }
+
   nginx::resource::vhost {
     'matuszewska.photo':
       ensure           => present,
