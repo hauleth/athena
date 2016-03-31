@@ -1,0 +1,1 @@
+# Athena - Puppet configuration
