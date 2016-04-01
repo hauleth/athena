@@ -13,6 +13,8 @@ node default {
   }
 
   include cron-puppet
+  class { 'nginx': manage_repo => true, }
+  class { 'letsencrypt': email =>  'lukasz@niemier.pl', }
 
   user {
     'hauleth':
@@ -30,7 +32,7 @@ node default {
       key    => 'AAAAB3NzaC1yc2EAAAADAQABAAABAQDJvEGHPG3UUkTNszvyciolaCTJYrvFYNMlrJuyGw8V6c7gtKBSUj3tZwV52ykxAGwZlecACs8CgttUT/ERL2BiOMtNRDje8t3Y2h7OBLYIxKP3LI43n4luidS7Fr05cyvIp5/fF2HwSet4/nF6qWL5ij+fvE+9l3XBjhvYl3nJjdYRXkJUsIo5T4j5Gu5ssdjzliWbs7cK8odl2wCncsI5SNaD7G9BGpRnGrg/ZeQ/1ZZD65M/aniz2oHbHA0Cm573hGkPcidkMNfSQRKvpyvwj8lxFRB4kgHL8WEKxKqmqi7Su5WRrMCKbnccB7r4C3obqO1OaCfiuevDrc3etWBl';
   }
 
-  package { ['tmux', 'iptables', 'mosh', 'postfix', 'lnav']: }
+  package { ['tmux', 'iptables', 'mosh', 'postfix', 'lnav', 'mailtools']: }
 
   file {
     '/etc/aliases':
@@ -46,14 +48,6 @@ node default {
     ['ssh', 'postfix']:
       ensure => running,
       enable => true;
-  }
-
-  class { 'nginx':
-    manage_repo => true,
-  }
-
-  class { 'letsencrypt':
-    email =>  'lukasz@niemier.pl',
   }
 
   nginx::resource::vhost {
