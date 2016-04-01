@@ -13,8 +13,9 @@ node default {
   }
 
   include cron-puppet
-  class { 'nginx': manage_repo => true, }
-  class { 'letsencrypt': email =>  'lukasz@niemier.pl', }
+  class { 'docker': docker_users => 'hauleth' }
+  class { 'nginx': manage_repo   => true, }
+  class { 'letsencrypt': email   => 'lukasz@niemier.pl', }
 
   user {
     'hauleth':
