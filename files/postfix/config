@@ -7,9 +7,9 @@ mynetworks = 127.0.0.0/8
 inet_interfaces = 188.213.168.25
 alias_maps = hash:/etc/aliases
 
-# relayhost = [smtp.gmail.com]:587
-# smtp_sasl_auth_enable = yes
-# smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
-# smtp_sasl_security_options = noanonymous
-# smtp_tls_CAfile = /etc/ssl/certs/thawte_Primary_Root_CA.pem
-# smtp_use_tls = yes
+relayhost = [smtp.gmail.com]:587
+smtp_sasl_auth_enable = yes
+smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
+smtp_sasl_security_options = noanonymous
+smtp_tls_CAfile = /etc/ssl/certs/thawte_Primary_Root_CA.pem
+smtp_use_tls = yes
