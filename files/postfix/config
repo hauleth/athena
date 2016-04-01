@@ -1,6 +1,6 @@
 myhostname = athena.niemier.pl
 mydestination = localhost, localhost.localdomain
-realy_domains = niemier.pl
+relay_domains = niemier.pl
 relayhost =
 mynetworks = 127.0.0.0/8
 alias_maps = hash:/etc/aliases
