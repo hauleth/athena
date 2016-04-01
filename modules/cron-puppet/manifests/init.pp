@@ -12,7 +12,7 @@ class cron-puppet ($minute = '*/5') {
 
   cron { 'puppet-apply':
     ensure  => present,
-    command => '/usr/bin/git --git-dir=/etc/puppet/.git --work-tree=/etc/puppet pull',
+    command => '/usr/bin/git --git-dir=/etc/puppet/.git --work-tree=/etc/puppet pull > /dev/null',
     user    => root,
     minute  => $minute,
     require => File['post-hook']

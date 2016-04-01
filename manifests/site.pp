@@ -6,6 +6,11 @@ node default {
   Package {
     ensure => latest,
   }
+  File {
+    mode  => 0644,
+    owner => root,
+    group => root,
+  }
 
   include cron-puppet
 
@@ -26,6 +31,12 @@ node default {
   }
 
   package { ['tmux', 'iptables', 'mosh', 'postfix', 'lnav']: }
+
+  file {
+    '/etc/aliases':
+      ensure  => file,
+      source => 'puppet:///files/postfix/aliases';
+  }
 
   service {
     ['ssh', 'postfix']:
