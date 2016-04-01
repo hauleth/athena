@@ -38,6 +38,9 @@ node default {
     '/etc/aliases':
       ensure => file,
       source => 'puppet:///files/postfix/aliases';
+    '/etc/postfix/main.cf':
+      ensure => file,
+      source => 'puppet:///files/postfix/config';
     '/etc/ssh/sshd_config':
       ensure => file,
       source => 'puppet:///files/sshd.config',
