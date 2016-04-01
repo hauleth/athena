@@ -34,8 +34,11 @@ node default {
 
   file {
     '/etc/aliases':
-      ensure  => file,
+      ensure => file,
       source => 'puppet:///files/postfix/aliases';
+    '/etc/ssh/sshd_config':
+      ensure => file,
+      source => 'puppet:///files/sshd.config';
   }
 
   service {
