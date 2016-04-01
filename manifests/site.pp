@@ -35,16 +35,13 @@ node default {
   file {
     '/etc/aliases':
       ensure  => file,
-      source => 'puppet:///postfix/aliases';
+      source => 'puppet:///files/postfix/aliases';
   }
 
   service {
     ['ssh', 'postfix']:
       ensure => running,
       enable => true;
-    'puppet':
-      ensure => stopped,
-      enable => false;
   }
 
   class { 'nginx':
