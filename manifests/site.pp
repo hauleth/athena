@@ -38,7 +38,7 @@ node default {
     '/etc/aliases':
       ensure => file,
       source => 'puppet:///files/postfix/aliases',
-      notify =>  Exec['aliases'];
+      notify =>  Exec['/usr/bin/aliases'];
     '/etc/postfix/main.cf':
       ensure => file,
       source => 'puppet:///files/postfix/config',
