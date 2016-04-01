@@ -13,7 +13,7 @@ node default {
   }
 
   include cron-puppet
-  class { 'docker': docker_users => 'hauleth' }
+  class { 'docker': docker_users => ['hauleth'] }
   class { 'nginx': manage_repo   => true, }
   class { 'letsencrypt': email   => 'lukasz@niemier.pl', }
 
