@@ -28,7 +28,7 @@ node default {
   package { ['tmux', 'iptables', 'mosh', 'postfix', 'lnav']: }
 
   service {
-    'ssh':
+    ['ssh', 'postfix']:
       ensure => running,
       enable => true;
     'puppet':
