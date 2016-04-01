@@ -10,6 +10,4 @@ smtp_sasl_security_options = noanonymous
 smtp_tls_CAfile = /etc/ssl/certs/thawte_Primary_Root_CA.pem
 smtp_use_tls = yes
 
-inet_interfaces = loopback_only
-
 alias_maps = hash:/etc/aliases
