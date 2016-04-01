@@ -37,14 +37,22 @@ node default {
   file {
     '/etc/aliases':
       ensure => file,
-      source => 'puppet:///files/postfix/aliases';
+      source => 'puppet:///files/postfix/aliases',
+      notify =>  Exec['aliases'];
     '/etc/postfix/main.cf':
       ensure => file,
-      source => 'puppet:///files/postfix/config';
+      source => 'puppet:///files/postfix/config',
+      notify => Service['postfix'];
     '/etc/ssh/sshd_config':
       ensure => file,
       source => 'puppet:///files/ssh/sshd.config',
       notify => Service['ssh'];
+  }
+
+  exec {
+    '/usr/bin/newaliases':
+      refreshonly => true,
+      notify      => Service['postfix'];
   }
 
   service {
