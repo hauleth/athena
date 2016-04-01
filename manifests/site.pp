@@ -43,7 +43,7 @@ node default {
       source => 'puppet:///files/postfix/config';
     '/etc/ssh/sshd_config':
       ensure => file,
-      source => 'puppet:///files/sshd.config',
+      source => 'puppet:///files/ssh/sshd.config',
       notify => Service['ssh'];
   }
 
