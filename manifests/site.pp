@@ -35,7 +35,7 @@ node default {
   file {
     '/etc/aliases':
       ensure  => file,
-      source => 'puppet:///files/postfix/aliases';
+      source => 'puppet:///postfix/aliases';
   }
 
   service {
