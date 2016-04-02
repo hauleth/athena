@@ -31,6 +31,11 @@ node default {
       user   => 'hauleth',
       type   => 'ssh-rsa',
       key    => 'AAAAB3NzaC1yc2EAAAADAQABAAABAQDJvEGHPG3UUkTNszvyciolaCTJYrvFYNMlrJuyGw8V6c7gtKBSUj3tZwV52ykxAGwZlecACs8CgttUT/ERL2BiOMtNRDje8t3Y2h7OBLYIxKP3LI43n4luidS7Fr05cyvIp5/fF2HwSet4/nF6qWL5ij+fvE+9l3XBjhvYl3nJjdYRXkJUsIo5T4j5Gu5ssdjzliWbs7cK8odl2wCncsI5SNaD7G9BGpRnGrg/ZeQ/1ZZD65M/aniz2oHbHA0Cm573hGkPcidkMNfSQRKvpyvwj8lxFRB4kgHL8WEKxKqmqi7Su5WRrMCKbnccB7r4C3obqO1OaCfiuevDrc3etWBl';
+    'pyskata@athena':
+      ensure => present,
+      user   => 'pyskata',
+      type   => 'ssh-rsa',
+      key    => 'AAAAB3NzaC1yc2EAAAABJQAAAQEAj6JrQl3iFAMvOSsAOu9ExzeUaR11QQ7T0oWiNMbCzCJGUzectS+H/hwk/z9dEscahVnJocfMZLOGKax9+nZPp8nvs/vcfMbTFj5deU3BETVqmA6gJ3OWEWZz1TJ2p6qbkhS9s8lOIOGdQc5Qaa5/jK/lVUgBi1bbbae4Lmddjb4J+X0uTarDTHRGCAFFKmXmJPWkgwLoqXVnMPLdO6wnTmN+PBh+lhX2p5qnnWkqkKQZ/STxDXFk0ZEqyUif2YkeC36Q8Mp2ta7nLAGCMjDT8V/APf42hHbBGe9WPoLD2Ej6iBzb5z9UTvMr+v/mDx2dY/Tqq1w2EXwpxSq/3XvMxw==';
   }
 
   package {
