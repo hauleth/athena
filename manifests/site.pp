@@ -45,7 +45,7 @@ node default {
       notify =>  Exec['postfix_aliases'];
     '/etc/postfix/main.cf':
       ensure => file,
-      source => 'puppet:///files/postfix/config',
+      source => 'puppet:///files/postfix/main.cf',
       notify => Service['postfix'];
     '/etc/ssh/sshd_config':
       ensure => file,
