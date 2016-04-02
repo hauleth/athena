@@ -33,13 +33,16 @@ node default {
       key    => 'AAAAB3NzaC1yc2EAAAADAQABAAABAQDJvEGHPG3UUkTNszvyciolaCTJYrvFYNMlrJuyGw8V6c7gtKBSUj3tZwV52ykxAGwZlecACs8CgttUT/ERL2BiOMtNRDje8t3Y2h7OBLYIxKP3LI43n4luidS7Fr05cyvIp5/fF2HwSet4/nF6qWL5ij+fvE+9l3XBjhvYl3nJjdYRXkJUsIo5T4j5Gu5ssdjzliWbs7cK8odl2wCncsI5SNaD7G9BGpRnGrg/ZeQ/1ZZD65M/aniz2oHbHA0Cm573hGkPcidkMNfSQRKvpyvwj8lxFRB4kgHL8WEKxKqmqi7Su5WRrMCKbnccB7r4C3obqO1OaCfiuevDrc3etWBl';
   }
 
-  package { ['tmux', 'iptables', 'mosh', 'postfix', 'lnav', 'mailutils']: }
+  package {
+    ['tmux', 'iptables', 'iptables-persistent', 'mosh', 'postfix',
+    'lnav', 'mailutils']:
+  }
 
   file {
     '/etc/aliases':
       ensure => file,
       source => 'puppet:///files/postfix/aliases',
-      notify =>  Exec['/usr/bin/newaliases'];
+      notify =>  Exec['postfix_aliases'];
     '/etc/postfix/main.cf':
       ensure => file,
       source => 'puppet:///files/postfix/config',
@@ -51,9 +54,15 @@ node default {
   }
 
   exec {
-    '/usr/bin/newaliases':
-      refreshonly => true,
-      notify      => Service['postfix'];
+    'postfix_aliases':
+      command     => '/usr/bin/newaliases',
+      notify      => Service['postfix'],
+      refreshonly => true;
+    'securing_file_ownership':
+      command => '/bin/chown -R root: /etc/puppet',
+      before  => Exec['securing_file_permissions'];
+    'securing_file_permissions':
+      command => '/usr/bin/find /etc/puppet -type f -exec chmod 600 {} \;';
   }
 
   service {
