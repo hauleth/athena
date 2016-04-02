@@ -1,8 +1,7 @@
 myhostname = athena.niemier.pl
 mydomain = niemier.pl
 myorigin = /etc/mailname
-mydestination = localhost, localhost.localdomain
-relay_domains = niemier.pl athena.niemier.pl
+relay_domains = niemier.pl
 # relayhost = 
 mynetworks = 127.0.0.0/8
 inet_interfaces = loopback-only
