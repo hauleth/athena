@@ -1,6 +1,6 @@
 myhostname = athena.niemier.pl
-mydomain = niemier.pl
-myorigin = /etc/mailname
+mydomain = athena.niemier.pl
+myorigin = $mydomain
 relay_domains = niemier.pl
 # relayhost = 
 mynetworks = 127.0.0.0/8
