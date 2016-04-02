@@ -8,3 +8,10 @@ mynetworks = 127.0.0.0/8
 inet_interfaces = loopback-only
 alias_maps = hash:/etc/aliases
 inet_protocols = all
+
+relayhost = [smtp.gmail.com]:587
+smtp_sasl_auth_enable = yes
+smtp_sasl_password_maps = hash:/etc/postfix/sasl/sasl_passwd
+smtp_sasl_security_options = noanonymous
+smtp_tls_CAfile = /etc/ssl/certs/thawte_Primary_Root_CA.pem
+smtp_use_tls = yes
