@@ -56,6 +56,10 @@ node default {
       ensure => file,
       source => 'puppet:///files/ssh/sshd.config',
       notify => Service['ssh'];
+    '/sbin/iptables-rules':
+      ensure => file,
+      source => 'puppet:///files/iptables/rules',
+      notify => Exec['update iptables'];
   }
 
   exec {
@@ -68,6 +72,9 @@ node default {
       before  => Exec['securing_file_permissions'];
     'securing_file_permissions':
       command => '/usr/bin/find /etc/puppet -type f -exec chmod 600 {} \;';
+    'update iptables':
+      command => '/bin/sh /sbin/iptables-rules',
+      require => File['/sbin/iptables-rules'];
   }
 
   service {

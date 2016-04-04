@@ -1,0 +1,33 @@
+#!/bin/sh
+
+echo "Clear old firewall rules..."
+iptables -F
+iptables -X
+
+echo "Drop all INPUT and FORWARD..."
+iptables -P INPUT DROP
+iptables -P FORWARD DROP
+
+iptables -P OUTPUT ACCEPT
+
+echo "Drop all IPv6 traffic..."
+ip6tables -P INPUT DROP
+ip6tables -P FORWARD DROP
+
+ip6tables -P OUTPUT ACCEPT
+
+echo "Accept everything on lo..."
+iptables -A INPUT -i lo -p all -j ACCEPT
+iptables -A OUTPUT -o lo -p all -j ACCEPT
+
+iptables -A INPUT --dport 22 -j ACCEPT
+
+# Docker
+iptables -N DOCKER
+iptables -N DOCKER-ISOLATION
+iptables -A FORWARD -j DOCKER-ISOLATION
+iptables -A FORWARD -o docker0 -j DOCKER
+iptables -A FORWARD -o docker0 -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+iptables -A FORWARD -i docker0 ! -o docker0 -j ACCEPT
+iptables -A FORWARD -i docker0 -o docker0 -j ACCEPT
+iptables -A DOCKER-ISOLATION -j RETURN
