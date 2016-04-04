@@ -105,8 +105,7 @@ node default {
     'glances':
       image            => 'nicolargo/glances',
       command          => 'python -m glances -w',
-      ports            => ['61208'],
-      expose           => ['61208'],
+      ports            => ['61208:61208'],
       volumes          => ['/var/run/docker.sock:/var/run/docker.sock:ro'],
       extra_parameters => '--pid=host';
   }
