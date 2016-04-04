@@ -39,8 +39,7 @@ node default {
   }
 
   package {
-    ['tmux', 'iptables', 'iptables-persistent', 'mosh', 'postfix',
-    'lnav', 'mailutils']:
+    ['tmux', 'iptables', 'mosh', 'postfix', 'lnav', 'mailutils']:
   }
 
   file {
