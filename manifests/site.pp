@@ -84,7 +84,10 @@ node default {
       ssl_cert         => '/etc/letsencrypt/live/matuszewska.photo/fullchain.pem',
       ssl_key          => '/etc/letsencrypt/live/matuszewska.photo/privkey.pem',
       rewrite_to_https => true,
-      require          => User['pyskata'],
+      require          => User['pyskata'];
+    'athena.niemier.pl':
+      ensure => present,
+      proxy  => 'http://localhost:61208';
   }
 
   letsencrypt::certonly {
