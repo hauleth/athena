@@ -12,7 +12,7 @@ node default {
     group => root,
   }
 
-  include cron-puppet
+  class { 'cron-puppet': }
   class { 'docker': docker_users => ['hauleth'] }
   class { 'nginx': manage_repo   => true, }
   class { 'letsencrypt': email   => 'lukasz@niemier.pl', }
@@ -93,5 +93,21 @@ node default {
       webroot_paths => ['/home/pyskata/www'],
       manage_cron   => true,
       require       => Nginx::Resource::Vhost['matuszewska.photo']
+  }
+
+  docker::image {
+    'nicolargo/glances':
+      ensure    => present,
+      image_tag => latest,
+  }
+
+  docker::run {
+    'glances':
+      image   => 'nicolargo/glances',
+      command => 'python -m glances -w',
+      ports   => ['61208'],
+      expose  => ['61208'],
+      volumes => ['/var/run/docker.sock:/var/run/docker.sock:ro'],
+      pid     => host,
   }
 }
