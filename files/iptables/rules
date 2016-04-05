@@ -9,10 +9,12 @@ iptables -P OUTPUT ACCEPT
 iptables -N DOCKER
 iptables -N DOCKER-ISOLATION
 iptables -A INPUT -p tcp -m tcp --dport 80 -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -A INPUT -p tcp -m tcp --dport 443 -m state --state NEW,ESTABLISHED -j ACCEPT
 iptables -A INPUT -p tcp -m tcp --dport 22 -m state --state NEW,ESTABLISHED -j ACCEPT
 iptables -A INPUT -p udp -m udp --dport 60000:61000 -j ACCEPT
 iptables -A INPUT -i lo -j ACCEPT
 iptables -A INPUT -i docker0 -j ACCEPT
+iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 iptables -A FORWARD -j DOCKER-ISOLATION
 iptables -A FORWARD -o docker0 -j DOCKER
 iptables -A FORWARD -o docker0 -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
