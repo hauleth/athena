@@ -12,7 +12,7 @@ node default {
     group => root,
   }
 
-  class { 'cron-puppet': minutes => '*/10' }
+  class { 'cron-puppet': minute  => '*/10' }
   class { 'docker': docker_users => ['hauleth'] }
   class { 'nginx': manage_repo   => true, }
   class { 'letsencrypt': email   => 'lukasz@niemier.pl', }
