@@ -107,7 +107,10 @@ node default {
   docker::image {
     'nicolargo/glances':
       ensure    => present,
-      image_tag => latest,
+      image_tag => latest;
+    'jenkinsci/jenkins':
+      ensure    => present,
+      image_tag => '2.0-rc-1';
   }
 
   docker::run {
@@ -117,5 +120,8 @@ node default {
       ports            => ['61208:61208'],
       volumes          => ['/var/run/docker.sock:/var/run/docker.sock:ro'],
       extra_parameters => '--pid=host';
+    'jenkins':
+      image => 'jenkinsci/jenkins-2.0-rc-1',
+      ports => ['8080:8080', '50000:50000'],
   }
 }
