@@ -94,6 +94,9 @@ node default {
     'athena.niemier.pl':
       ensure => present,
       proxy  => 'http://localhost:61208';
+    'jenkins.niemier.pl':
+      ensure => present,
+      proxy  => 'http://localhost:8080';
   }
 
   letsencrypt::certonly {
