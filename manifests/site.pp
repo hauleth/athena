@@ -94,9 +94,6 @@ node default {
     'athena.niemier.pl':
       ensure => present,
       proxy  => 'http://localhost:61208';
-    'jenkins.niemier.pl':
-      ensure => absent,
-      proxy  => 'http://localhost:8080';
   }
 
   letsencrypt::certonly {
@@ -111,9 +108,6 @@ node default {
     'nicolargo/glances':
       ensure    => present,
       image_tag => latest;
-    'jenkinsci/jenkins':
-      ensure    => absent,
-      image_tag => '2.0-rc-1';
   }
 
   docker::run {
@@ -123,9 +117,5 @@ node default {
       ports            => ['61208:61208'],
       volumes          => ['/var/run/docker.sock:/var/run/docker.sock:ro'],
       extra_parameters => '--pid=host';
-    'jenkins':
-      ensure => absent,
-      image  => 'jenkinsci/jenkins:2.0-rc-1',
-      ports  => ['8080:8080', '50000:50000'],
   }
 }
