@@ -124,7 +124,7 @@ node default {
       volumes          => ['/var/run/docker.sock:/var/run/docker.sock:ro'],
       extra_parameters => '--pid=host';
     'jenkins':
-      image => 'jenkinsci/jenkins-2.0-rc-1',
+      image => 'jenkinsci/jenkins:2.0-rc-1',
       ports => ['8080:8080', '50000:50000'],
   }
 }
