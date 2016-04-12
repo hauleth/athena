@@ -95,7 +95,7 @@ node default {
       ensure => present,
       proxy  => 'http://localhost:61208';
     'jenkins.niemier.pl':
-      ensure => present,
+      ensure => absent,
       proxy  => 'http://localhost:8080';
   }
 
@@ -112,7 +112,7 @@ node default {
       ensure    => present,
       image_tag => latest;
     'jenkinsci/jenkins':
-      ensure    => present,
+      ensure    => absent,
       image_tag => '2.0-rc-1';
   }
 
@@ -124,7 +124,8 @@ node default {
       volumes          => ['/var/run/docker.sock:/var/run/docker.sock:ro'],
       extra_parameters => '--pid=host';
     'jenkins':
-      image => 'jenkinsci/jenkins:2.0-rc-1',
-      ports => ['8080:8080', '50000:50000'],
+      ensure => stopped,
+      image  => 'jenkinsci/jenkins:2.0-rc-1',
+      ports  => ['8080:8080', '50000:50000'],
   }
 }
